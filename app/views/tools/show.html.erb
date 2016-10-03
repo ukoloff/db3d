@@ -11,3 +11,14 @@
     <% end %></li>
   </ul>
 </span>
+
+<dl class="dl-horizontal">
+  <dt>Имя</dt>
+  <dd><%= @tool.name %></dd>
+  <dt>Дата</dt>
+  <dd><%= @tool.date2str %></dd>
+  <dt>Примечание</dt>
+  <dd><%= @tool.note %></dd>
+  <dt>Чертёж</dt>
+  <dd><%= (foto=@tool.foto) ? link_to(foto.name, "#{tool_path @tool}?img") : '-' %></dd>
+</dl>

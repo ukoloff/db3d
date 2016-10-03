@@ -9,7 +9,7 @@ $.ajax('?js')
 <% Tool.all.each do |t| %>
 <tr>
   <td><%= link_to t.name, t %>
-  <td><%= t.date.localtime.strftime '%d.%m.%Y' rescue '-' %></td>
+  <td><%= t.date2str %></td>
 </tr>
 <% end %>
 </table>
