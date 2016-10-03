@@ -1,4 +1,15 @@
-Hello, world!
 <script>
 $.ajax('?js')
 </script>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <th>Имя</th>
+    <th>Дата</th>
+  </thead>
+<% Tool.all.each do |t| %>
+<tr>
+  <td><%= link_to t.name, t %>
+  <td><%= t.date.localtime.strftime '%d.%m.%Y' rescue '-' %></td>
+</tr>
+<% end %>
+</table>
