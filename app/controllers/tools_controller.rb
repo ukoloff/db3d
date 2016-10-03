@@ -28,6 +28,19 @@ class ToolsController < ApplicationController
     end
   end
 
+  def new
+    @tool ||= Tool.new
+  end
+
+  def create
+    @tool = Tool.new tool_params
+    if @tool.save
+      redirect_to @tool
+    else
+      render 'new'
+    end
+  end
+
   private
 
   def item

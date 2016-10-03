@@ -12,6 +12,6 @@
 
   <button type='submit' class='btn btn-primary'>
     <i class="fa fa-save"></i>
-    Сохранить
+    <%= @tool.new_record? ? 'Создать' : 'Сохранить' %>
   </button>
 <% end %>
