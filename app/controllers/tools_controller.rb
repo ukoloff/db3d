@@ -6,7 +6,17 @@ class ToolsController < ApplicationController
   end
 
   def show
+    item
+  end
+
+  def edit
+    item
+  end
+
+  def destroy
     item or return
+    @tool.destroy
+    redirect_to tools_url
   end
 
   private
