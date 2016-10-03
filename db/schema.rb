@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930101259) do
+ActiveRecord::Schema.define(version: 20161003160032) do
 
   create_table "fotos", force: :cascade do |t|
     t.integer  "tool_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160930101259) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
 end
