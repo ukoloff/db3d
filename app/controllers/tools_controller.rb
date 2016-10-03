@@ -21,7 +21,11 @@ class ToolsController < ApplicationController
 
   def update
     item or return
-    redirect_to @tool
+    if @tool.update tool_params
+      redirect_to @tool
+    else
+      render 'edit'
+    end
   end
 
   private
@@ -34,5 +38,11 @@ class ToolsController < ApplicationController
       redirect_to tools_url
       nil
     end
+  end
+
+  def tool_params
+    params.require(:tool).permit %i(name date note)
+    # z[:date] = Date.new(*z[:date].split(/\D+/).reverse.map(&:to_i)) unless z[:date].blank?
+    # z
   end
 end
