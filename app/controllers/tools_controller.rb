@@ -19,6 +19,11 @@ class ToolsController < ApplicationController
     redirect_to tools_url
   end
 
+  def update
+    item or return
+    redirect_to @tool
+  end
+
   private
 
   def item
