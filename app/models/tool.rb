@@ -4,6 +4,6 @@ class Tool < ActiveRecord::Base
   has_one :foto
 
   def date2str
-    date.localtime.strftime '%d.%m.%Y' rescue '-'
+    date.localtime.strftime '%d.%m.%Y' rescue nil
   end
 end
