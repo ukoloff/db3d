@@ -10,7 +10,7 @@ class Tool < ActiveRecord::Base
   end
 
   def foto_name
-    f = Foto.where(tool_id: id).first
+    f = Foto.where(tool_id: id).select(:name).first
     f.name if f
   end
 end
