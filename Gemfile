@@ -40,3 +40,10 @@ gem 'font-awesome-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'paranoia'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem "omniauth-yandex"
+gem 'omniauth-vkontakte'
+gem "omniauth-google-oauth2"
+gem 'omniauth-mailru'
