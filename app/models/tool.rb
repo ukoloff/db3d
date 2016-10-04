@@ -8,4 +8,9 @@ class Tool < ActiveRecord::Base
   def date2str
     date.localtime.strftime '%d.%m.%Y' rescue nil
   end
+
+  def foto_name
+    f = Foto.where(tool_id: id).first
+    f.name if f
+  end
 end
