@@ -7,6 +7,7 @@ class ToolsController < ApplicationController
 
   def show
     item
+    send_foto if params.key? 'img'
   end
 
   def edit
@@ -68,5 +69,10 @@ class ToolsController < ApplicationController
     foto.mime = img.content_type
     foto.blob = img.read
     foto.save
+  end
+
+  def send_foto
+    return redirect_to @tool unless foto = @tool.foto
+    send_data foto.blob, filename: foto.name, type: foto.mime
   end
 end
