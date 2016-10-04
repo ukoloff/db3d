@@ -1,4 +1,20 @@
-Hello, world!
 <script>
 $.ajax('?js')
 </script>
+<%= render 'breadcrumb' %>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <th>Имя</th>
+    <th>Дата</th>
+  </thead>
+<% Tool.all.each do |t| %>
+<tr>
+  <td><%= link_to t.name, t %>
+  <td><%= t.date2str %></td>
+</tr>
+<% end %>
+</table>
+<a href="<%= new_tool_path %>" class='btn btn-info'>
+  <i class="fa fa-plus"></i>
+  Создать
+</a>
