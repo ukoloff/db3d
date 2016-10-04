@@ -54,9 +54,19 @@ class ToolsController < ApplicationController
   def tool_update
     new = @tool.new_record?
     if @tool.update tool_params
+      attach_foto
       redirect_to @tool
     else
       render new ? 'new' : 'edit'
     end
+  end
+
+  def attach_foto
+    img = params[:tool][:img] or return
+    foto = @tool.foto || @tool.build_foto
+    foto.name = img.original_filename
+    foto.mime = img.content_type
+    foto.blob = img.read
+    foto.save
   end
 end
