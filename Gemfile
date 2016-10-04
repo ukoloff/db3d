@@ -40,6 +40,7 @@ gem 'font-awesome-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'paranoia'
+gem 'openssl-win-root'	if Gem.win_platform?
 gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'

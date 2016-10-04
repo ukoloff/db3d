@@ -127,6 +127,7 @@ GEM
     omniauth-yandex (0.0.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
+    openssl-win-root (1.1.0)
     paranoia (2.1.5)
       activerecord (~> 4.0)
     pg (0.19.0-x86-mingw32)
@@ -215,6 +216,7 @@ DEPENDENCIES
   omniauth-twitter
   omniauth-vkontakte
   omniauth-yandex
+  openssl-win-root
   paranoia
   pg
   puma
