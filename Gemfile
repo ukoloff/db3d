@@ -24,6 +24,7 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'figaro'
 end
 
 group :development do
@@ -41,7 +42,6 @@ gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'paranoia'
 gem 'openssl-win-root'	if Gem.win_platform?
-gem 'figaro'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'

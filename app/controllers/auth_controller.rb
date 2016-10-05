@@ -1,6 +1,6 @@
 class AuthController < ActionController::Base
   def callback
     auth_hash = request.env['omniauth.auth']
-    render json: auth_hash
+    render plain: YAML.dump(auth_hash)
   end
 end
