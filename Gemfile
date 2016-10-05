@@ -41,6 +41,7 @@ gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'paranoia'
 gem 'openssl-win-root'	if Gem.win_platform?
+gem 'figaro'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
