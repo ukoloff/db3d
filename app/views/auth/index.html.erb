@@ -1,0 +1,18 @@
+Авторизуйтесь при помощи одной (или нескольких) из социальных сетей:
+<div class="btn-group">
+  <button class='btn btn-success dropdown-toggle' data-toggle='dropdown'>
+    <i class='fa fa-key'></i> Авторизоваться
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right">
+    <% 'github facebook twitter yandex vkontakte'.split(' ').each do |z| %>
+      <li><a href="/auth/<%= z%>"><%= z %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<% if flash[:yml] %>
+<div class="alert alert-success">
+<pre><%= flash[:yml] %></pre>
+</div>
+<% end %>
