@@ -1,2 +1,4 @@
 github:
   scope: user:email
+vkontakte:
+  scope: email,photos
