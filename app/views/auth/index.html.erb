@@ -14,8 +14,5 @@
   </ul>
 </div>
 
-<% if flash[:yml] %>
-<div class="alert alert-success">
-<pre><%= flash[:yml] %></pre>
-</div>
-<% end %>
+<li>uid=<%= session[:uid] %>
+<li>name=<%= User.find(session[:uid]).name rescue nil %>

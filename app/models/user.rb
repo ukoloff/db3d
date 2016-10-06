@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   has_many :oauths, -> { order updated_at: :desc}
 
   def name
-    oauths.first.info['name'] rescue nil
+    oauths.first.info['info']['name'] rescue nil
   end
 end
