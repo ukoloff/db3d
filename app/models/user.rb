@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   def name
     oauth.info['info']['name'] rescue nil
   end
+
+  def authenticate?
+    !disabled && oauths.any?
+  end
 end
