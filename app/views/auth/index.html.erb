@@ -14,5 +14,11 @@
   </ul>
 </div>
 
-<li>uid=<%= session[:uid] %>
-<li>name=<%= User.find(session[:uid]).name rescue nil %>
+<% if me %>
+<h2>Авторизован как</h2>
+<ul>
+  <% me.oauths.each do |z| %>
+  <li><b><%= z.name %></b> @ <span class='label label-warning'><%= z.provider %></span></li>
+  <% end %>
+</ul>
+<% end %>

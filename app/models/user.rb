@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_one :oauth, -> { order updated_at: :desc}
 
   def name
-    oauth.info['info']['name'] rescue nil
+    oauth.name rescue nil
   end
 
   def authenticate?

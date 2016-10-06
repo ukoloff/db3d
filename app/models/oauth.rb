@@ -4,4 +4,8 @@ class Oauth < ActiveRecord::Base
   belongs_to :user
 
   serialize :info
+
+  def name
+    info['info']['name'] rescue nil
+  end
 end

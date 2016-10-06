@@ -5,7 +5,7 @@ class AuthController < ApplicationController
     z = request.env['omniauth.auth'].as_json
     oauth = Oauth.where(z.slice *%w(provider uid)).first_or_initialize
     oauth.info = z
-    oauth.user ||= User.find_by_id(session[:uid]) || User.create
+    oauth.user ||= current_user || User.create
     session[:uid] = oauth.user.id
     oauth.save
     redirect_to session[:a2] ? '/' : auth_path
