@@ -9,6 +9,7 @@ class AuthController < ApplicationController
     session[:uid] = oauth.user.id
     oauth.save
     redirect_to session[:a2] ? '/' : auth_path
+    session[:a2] = nil
   end
 
   def index
