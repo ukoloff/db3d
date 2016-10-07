@@ -2,7 +2,8 @@
 <%= link_to edit_tool_path(@tool), class: 'btn btn-info' do %>
 <i class='fa fa-pencil'></i> Изменить
 <% end %>
-<span class="dropdown">
+
+<div class="btn-group">
   <a class='btn btn-danger dropdown-toggle' data-toggle='dropdown'>
     <i class='fa fa-remove'></i> Удалить
   </a>
@@ -11,7 +12,7 @@
       <i class='fa fa-check'></i> Да, удалить
     <% end %></li>
   </ul>
-</span>
+</div>
 
 <dl class="dl-horizontal">
   <dt>Имя</dt>
