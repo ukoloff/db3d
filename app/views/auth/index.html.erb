@@ -21,4 +21,15 @@
   <li><b><%= z.name %></b> @ <span class='label label-warning'><%= z.provider %></span></li>
   <% end %>
 </ul>
+<div class='btn-group'>
+<button class='btn btn-lg btn-danger dropdown-toggle' data-toggle='dropdown''>
+  <i class='fa fa-lock'></i>
+  Выйти из системы
+</button>
+<ul class="dropdown-menu dropdown-menu-right">
+  <li><%= link_to auth_path, method: :delete do %>
+    <i class='fa fa-check'></i> Да, выйти из системы
+  <% end %></li>
+</ul>
+</div>
 <% end %>

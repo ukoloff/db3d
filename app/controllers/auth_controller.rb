@@ -14,4 +14,9 @@ class AuthController < ApplicationController
   def index
     session[:a2] = authenticate? ? nil : 1
   end
+
+  def logoff
+    session[:uid] = nil
+    redirect_to auth_path
+  end
 end
