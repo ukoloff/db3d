@@ -1,24 +1,18 @@
 <% if 'development' == Rails.env %>
-<ul class="nav navbar-nav navbar-right">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Разработчику">
-      <i class='fa fa-wrench'></i>
-      <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu">
-      <li><a href="/auth">
-        <i class='fa fa-key'></i>
-        Авторизация</a></li>
-      <li class="divider"></li>
-      <li><a href="https://db3d.herokuapp.com/tools" target="_blank">
-        <i class='fa fa-cloud'></i>
-        Heroku
-      </a></li>
-      <li><a href="<%= rails_routes_path %>" target="_blank">
-        <i class='fa fa-random'></i>
-        Routes
-      </a></li>
-    </ul>
-  </li>
-</ul>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Разработчику">
+    <i class='fa fa-wrench'></i>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="https://db3d.herokuapp.com/tools" target="_blank">
+      <i class='fa fa-cloud'></i>
+      Heroku
+    </a></li>
+    <li><a href="<%= rails_routes_path %>" target="_blank">
+      <i class='fa fa-random'></i>
+      Routes
+    </a></li>
+  </ul>
+</li>
 <% end %>

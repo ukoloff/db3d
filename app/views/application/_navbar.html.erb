@@ -11,7 +11,11 @@
       <a class="navbar-brand" href="/">db3d</a>
     </div>
     <div class="collapse navbar-collapse" id="db3d-navbar-collapse">
-      <%= render "dev" %>
+      <ul class="nav navbar-nav navbar-right">
+        <%= render "dev" %>
+        <%= render me ? 'me' : 'welcome' %>
+      </ul>
+
     </div>
   </div>
 </nav>
