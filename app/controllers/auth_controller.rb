@@ -22,7 +22,9 @@ class AuthController < ApplicationController
   end
 
   def unlink
-    current_user.oauths.where(id: params[:id]).destroy_all
+    if current_user.oauths.count > 1
+      current_user.oauths.where(id: params[:id]).destroy_all
+    end
     redirect_to auth_path
   end
 end

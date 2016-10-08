@@ -1,4 +1,5 @@
 <h2>Подключенные социальные сети</h2>
+<% drop = me.oauths.count > 1 %>
 <table class="table table-striped table-hover">
   <% me.oauths.each do |z| %>
   <tr>
@@ -6,6 +7,7 @@
       <span class='label label-info'><%= z.provider %></span>
     </td>
     <td><%= z.name %></td>
+    <% if drop %>
     <td class="text-right"><div class="btn-group">
       <button class='btn btn-danger btn-xs dropdown-toggle' data-toggle='dropdown'>
         Отключить
@@ -17,6 +19,7 @@
         <% end %></li>
       </ul>
     </div></td>
+    <% end %>
   </tr>
   <% end %>
 </table>
