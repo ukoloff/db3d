@@ -20,4 +20,9 @@ class AuthController < ApplicationController
     session[:uid] = nil
     redirect_to auth_path
   end
+
+  def unlink
+    current_user.oauths.where(id: params[:id]).destroy_all
+    redirect_to auth_path
+  end
 end

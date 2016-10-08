@@ -1,0 +1,19 @@
+<h2>Авторизация</h2>
+<% if me %>
+Для Вашего удобства Вы можете
+подключить дополнительные аккаунты социальных сетей.
+<% else %>
+Для работы на сайте Вам необходимо авторизоваться при помощи
+одной из социальных сетей.
+<% end %>
+<div class='text-center'><div class="btn-group dropup">
+  <button class='btn btn-success dropdown-toggle' data-toggle='dropdown'>
+    <i class='fa fa-key'></i> Авторизоваться
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <% 'github facebook twitter yandex vkontakte'.split(' ').each do |z| %>
+      <li><a href="/auth/<%= z%>"><%= z %></a></li>
+    <% end %>
+  </ul>
+</div></div>
