@@ -1,0 +1,6 @@
+github:
+  scope: user:email
+vkontakte:
+  scope: email,photos
+google_oauth2:
+  name: google

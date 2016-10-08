@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003160032) do
+ActiveRecord::Schema.define(version: 20161007121205) do
 
   create_table "fotos", force: :cascade do |t|
     t.integer  "tool_id"
@@ -22,10 +22,30 @@ ActiveRecord::Schema.define(version: 20161003160032) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "oauths", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.text     "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "oauths", ["provider", "uid"], name: "index_oauths_on_provider_and_uid"
+  add_index "oauths", ["user_id"], name: "index_oauths_on_user_id"
+
   create_table "tools", force: :cascade do |t|
     t.string   "name"
     t.text     "note"
     t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.boolean  "disabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
