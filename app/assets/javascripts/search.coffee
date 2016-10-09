@@ -1,7 +1,6 @@
 #
 # Быстрый полнотекстовый поиск
 #
-#= require without
 $ ->
   return unless table = $ '#q'
   $.ajax '?js'
