@@ -8,4 +8,10 @@ class Oauth < ActiveRecord::Base
   def name
     info['info']['name'] rescue nil
   end
+
+  def info= data
+    data.delete 'credentials'
+    data['extra'].delete "access_token" rescue nil # Twitter
+    super data
+  end
 end
