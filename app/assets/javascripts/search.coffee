@@ -23,7 +23,16 @@ start = (data, table)->
   pagesize = 10
   nav = table.next()
   tbody = table.find 'tbody'
+  form = table.prev()
+  count = form.find 'span:first'
   pager = 0
   do render = (page = 1, pages = Math.ceil data.length / pagesize)->
-    tbody.html t data.slice (page - 1) * pagesize, page * pagesize
+    tbody.html t shown = data.slice (page - 1) * pagesize, page * pagesize
     nav.html pager = $.pager pages, page, render
+    count.text _uniq([shown.length, data.length]).join '/'
+
+_uniq = (array)->
+  seen = {}
+  for z in array when not seen[z]
+    seen[z] = 1
+    z
