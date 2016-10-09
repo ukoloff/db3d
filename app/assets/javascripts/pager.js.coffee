@@ -21,11 +21,11 @@ tPager = withOut (pages, page)->
     else
       ranges.push false, range
 
-  div class: 'pagination', -> ul ->
+  ul class: 'pagination', ->
     li -> a
       href: '#'
       title: page - 1 or pages
-      -> i class: 'icon-double-angle-left'
+      -> i class: 'fa fa-angle-double-left'
 
     _each ranges, (range)->
       if range
@@ -36,11 +36,11 @@ tPager = withOut (pages, page)->
               href: '#'
               n
       else
-        li -> span -> i class: 'icon-ellipsis-horizontal'
+        li -> span -> i class: 'fa fa-ellipsis-h'
 
     li -> a
       href: '#'
       title: if page < pages then page + 1 else 1
-      -> i class: 'icon-double-angle-right'
+      -> i class: 'fa fa-angle-double-right'
 
 tPager.id = 'tools/pager'
