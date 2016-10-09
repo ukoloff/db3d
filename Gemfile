@@ -41,3 +41,4 @@ gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'paranoia'
 gem 'without-rails'
+gem 'ru_propisju', require: false
