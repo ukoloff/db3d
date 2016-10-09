@@ -1,20 +1,31 @@
-<script>
-$.ajax('?js')
-</script>
 <%= render 'breadcrumb' %>
-<table class="table table-bordered table-striped table-hover">
+
+<form class='form-inline'>
+  <label>Поиск
+    <input type='text' class='form-control' name='q'>
+  </label>
+  <span class='badge' title='Показано/Найдено/Загружено строк'>?</span>
+
+  <%= link_to new_tool_path, class: 'btn btn-info pull-right' do %>
+    <i class="fa fa-plus"></i>
+    Создать
+  <% end %>
+</form>
+
+<table class="table table-bordered table-striped table-hover" id='q'>
   <thead>
     <th>Имя</th>
     <th>Дата</th>
   </thead>
-<% Tool.all.each do |t| %>
-<tr>
-  <td><%= link_to t.name, t %>
-  <td><%= t.date2str %></td>
-</tr>
-<% end %>
+  <tbody></tbody>
+  <tfoot>
+    <tr>
+      <td colspan='2'>
+        <i class='fa fa-spin fa-refresh'></i>
+        Подождите, идёт загрузка...
+      </td>
+    </tr>
+  </tfoot>
 </table>
-<a href="<%= new_tool_path %>" class='btn btn-info'>
-  <i class="fa fa-plus"></i>
-  Создать
-</a>
+
+<nav class='text-center'></nav>

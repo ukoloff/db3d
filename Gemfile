@@ -41,6 +41,8 @@ gem 'font-awesome-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'paranoia'
+gem 'without-rails'
+gem 'ru_propisju', require: false
 gem 'openssl-win-root'	if Gem.win_platform?
 gem 'omniauth-github'
 gem 'omniauth-facebook'
