@@ -21,7 +21,7 @@ t = withOut ->
 
 start = (data, table)->
   pagesize = 10
-  nav = table.prev()
+  nav = table.next()
   tbody = table.find 'tbody'
   pager = 0
   do render = (page = 1, pages = Math.ceil data.length / pagesize)->

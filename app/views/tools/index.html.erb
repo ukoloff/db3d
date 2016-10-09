@@ -1,5 +1,16 @@
 <%= render 'breadcrumb' %>
-<nav class='text-center'></nav>
+
+<form class='form-inline'>
+  <label>Поиск
+    <input type='text' class='form-control' name='q'>
+  </label>
+
+  <%= link_to new_tool_path, class: 'btn btn-info pull-right' do %>
+    <i class="fa fa-plus"></i>
+    Создать
+  <% end %>
+</form>
+
 <table class="table table-bordered table-striped table-hover" id='q'>
   <thead>
     <th>Имя</th>
@@ -15,7 +26,5 @@
     </tr>
   </tfoot>
 </table>
-<a href="<%= new_tool_path %>" class='btn btn-info'>
-  <i class="fa fa-plus"></i>
-  Создать
-</a>
+
+<nav class='text-center'></nav>
