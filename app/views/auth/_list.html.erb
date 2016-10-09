@@ -11,7 +11,9 @@
   <% me.oauths.each do |z| %>
   <tr>
     <td width='1' class='text-center'>
-      <span class='label label-info'><%= z.provider %></span>
+      <i
+        class="fa fa-<%= providers[z.provider][:icon] %>"
+        title="<%= providers[z.provider][:title] %>"></i>
     </td>
     <td><%= z.name %></td>
     <% if drop %>
