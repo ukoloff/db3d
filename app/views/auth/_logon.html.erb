@@ -14,7 +14,7 @@
   <ul class="dropdown-menu">
     <% providers.each do |k, v| %>
       <li><%= link_to "#{auth_path}/#{k}" do %>
-        <i class="fa fa-fw fa-<%= v[:icon] %>"></i>
+        <i class="fa fa-fw fa-<%= v[:icon] %> text-info"></i>
         <%= v[:title] %>
       <% end %></li>
     <% end %>
