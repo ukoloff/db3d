@@ -12,7 +12,7 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <% self.class::Providers.each do |k, v| %>
+    <% providers.each do |k, v| %>
       <li><%= link_to "#{auth_path}/#{k}" do %>
         <i class="fa fa-fw fa-<%= v[:icon] %>"></i>
         <%= v[:title] %>

@@ -15,4 +15,8 @@ module AuthHelper
     v = Hash===v ? v.first : [v, v]
     [v[1], {title: k, icon: v[0]}]
   end]
+
+  def providers
+    self.class::Providers
+  end
 end
