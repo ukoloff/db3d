@@ -11,7 +11,7 @@ $.sorter = (table)->
 
   render = (initial)->
     cells.each (i, th)->
-      th.html b = $ t if i + 1 != Math.abs initial
+      th.html b = $ t current = if i + 1 != Math.abs initial
         0
       else if initial > 0
         +1
@@ -21,10 +21,16 @@ $.sorter = (table)->
       .each (j)->
         $ @
         .click ->
-          console.log "Click #{i+1}:#{1-j}"
+          return if current == pos = 1 - j
+          render pos = (i+1)*pos
+          $.each clicks, (n, cb)->
+            cb? pos
+    @
 
   render: render
-  click: (cb)-> clicks.push cb
+  click: (cb)->
+    clicks.push cb
+    @
 
 tDiv = do withOut ->
   div class: 'pull-right dropdown'

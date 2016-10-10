@@ -31,6 +31,7 @@ start = (data, table)->
   sample = data.slice()
   $.sorter table
   .render 1
+  .click (n)-> console.log "Sort:", n
   render = (page = 1, pages = Math.ceil sample.length / pagesize)->
     tbody.html t shown = sample.slice (page - 1) * pagesize, page * pagesize
     nav.html pager = $.pager pages, page, render
