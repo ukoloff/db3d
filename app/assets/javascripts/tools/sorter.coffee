@@ -2,7 +2,7 @@
 # Кнопки сортировки в таблице
 #
 $.sorter = (table)->
-  click = 0
+  clicks = []
   cells = $ 'thead tr th', table
   .map (i, th)->
     $ th
@@ -11,15 +11,20 @@ $.sorter = (table)->
 
   render = (initial)->
     cells.each (i, th)->
-      th.append b = $ t if i + 1 != Math.abs initial
+      th.html b = $ t if i + 1 != Math.abs initial
         0
       else if initial > 0
         +1
       else
         -1
+      $ 'a', b
+      .each (j)->
+        $ @
+        .click ->
+          console.log "Click #{i+1}:#{1-j}"
 
   render: render
-  click: (cb)-> click = cb
+  click: (cb)-> clicks.push cb
 
 tDiv = do withOut ->
   div class: 'pull-right dropdown'
