@@ -1,3 +1,6 @@
+#
+# Навигация по страницам
+#
 $.pager = pager = (pages, page, click)->
   z = $ tPager pages, page
   z.find('a').click ->
@@ -6,17 +9,13 @@ $.pager = pager = (pages, page, click)->
   z
 
 tPager = withOut (pages, page)->
-  # Самописный кусочек из underscore
-  _each = (array, cb)-> cb z for z in array
-  _last = (array)-> array[array.length - 1]
-
   return if pages<2
   page = 1 if page <1
   page = pages if page>pages
 
   ranges = [[1,3]]
-  _each [[page-2, page+2], [pages-2, pages]], (range)->
-    if (z=_last ranges)[1]+3>range[0]
+  _.each [[page-2, page+2], [pages-2, pages]], (range)->
+    if (z=_.last ranges)[1]+3>range[0]
       z[1]=range[1]
     else
       ranges.push false, range
@@ -27,7 +26,7 @@ tPager = withOut (pages, page)->
       title: page - 1 or pages
       -> i class: 'fa fa-angle-double-left'
 
-    _each ranges, (range)->
+    _.each ranges, (range)->
       if range
         for n in [range[0]..range[1]]
           li
