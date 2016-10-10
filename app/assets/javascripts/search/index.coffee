@@ -6,7 +6,8 @@ pagesize = Math.max 10, pagesize || 0
 localStorage?['pagesize'] = pagesize
 
 $ ->
-  return unless table = $ '#q'
+  table = $ '#q'
+  return unless table.length
   $.ajax '?js'
   .complete ->
     table.find 'tfoot'
@@ -50,11 +51,12 @@ start = (data, table)->
     count.text _.uniq([shown.length, sample.length, data.length]).join '/'
 
   do refilter = ->
+    return clearInterval timer unless q.length
     return if qv == q.val()
     sample = filter qv = q.val(), data
     localStorage?['q'] = qv
     do render
-  setInterval refilter, 100
+  timer = setInterval refilter, 100
 
 filter = (q, array)->
   return array.slice() unless q
