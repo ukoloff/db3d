@@ -51,12 +51,11 @@ start = (data, table)->
     count.text _.uniq([shown.length, sample.length, data.length]).join '/'
 
   do refilter = ->
-    return clearInterval timer unless q.length
     return if qv == q.val()
     sample = filter qv = q.val(), data
     localStorage?['q'] = qv
     do render
-  timer = setInterval refilter, 100
+  setInterval refilter, 100
 
 filter = (q, array)->
   return array.slice() unless q

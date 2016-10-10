@@ -21,10 +21,11 @@ $.sorter = (table)->
       .each (j)->
         $ @
         .click ->
-          return if current == pos = 1 - j
+          return false if current == pos = 1 - j
           render pos = (i+1)*pos
           $.each clicks, (n, cb)->
             cb? pos
+          false
     @
 
   render: render
