@@ -42,7 +42,8 @@ start = (data, table)->
 
 filter = (q, array)->
   return array.slice() unless q
+  q = q.toLowerCase()
   match = (rec)->
-    return true for k, v of rec when 0 <= String(v).indexOf q
+    return true for k, v of rec when 0 <= String(v).toLowerCase().indexOf q
     false
   z for z in array when match z
