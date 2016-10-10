@@ -52,8 +52,6 @@ start = (data, table)->
     do render
   setInterval refilter, 100
 
-  do render
-
 filter = (q, array)->
   return array.slice() unless q
   q = q.toLowerCase()
