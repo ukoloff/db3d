@@ -29,6 +29,8 @@ start = (data, table)->
   pager = 0
   qv = ''
   sample = data.slice()
+  $.sorter table
+  .render 1
   render = (page = 1, pages = Math.ceil sample.length / pagesize)->
     tbody.html t shown = sample.slice (page - 1) * pagesize, page * pagesize
     nav.html pager = $.pager pages, page, render
