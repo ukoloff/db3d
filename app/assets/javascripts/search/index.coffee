@@ -25,25 +25,33 @@ start = (data, table)->
   tbody = table.find 'tbody'
   form = table.prev()
   q = form.find 'input:first'
+  q.val localStorage?['q'] or ''
   count = form.find 'span:first'
   pager = 0
-  qv = ''
-  sample = data.slice()
+  qv = 0
+  sample = []
+
+  # Установить обработчики сортировки
   $.sorter table
   .render localStorage?['sort']
   .click (n)->
     localStorage?['sort'] = n
   .click (n)->
     console.log "Sort:", n
+
+  # Нарисовать отфильтрованное
   render = (page = 1, pages = Math.ceil sample.length / pagesize)->
     tbody.html t shown = sample.slice (page - 1) * pagesize, page * pagesize
     nav.html pager = $.pager pages, page, render
     count.text _.uniq([shown.length, sample.length, data.length]).join '/'
-  setInterval ->
+
+  do refilter = ->
     return if qv == q.val()
     sample = filter qv = q.val(), data
+    localStorage?['q'] = qv
     do render
-  , 100
+  setInterval refilter, 100
+
   do render
 
 filter = (q, array)->
