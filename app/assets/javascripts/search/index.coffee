@@ -1,6 +1,10 @@
 #
 # Быстрый полнотекстовый поиск
 #
+pagesize = Number localStorage?['pagesize']
+pagesize = Math.max 10, pagesize || 0
+localStorage?['pagesize'] = pagesize
+
 $ ->
   return unless table = $ '#q'
   $.ajax '?js'
@@ -20,7 +24,6 @@ t = withOut ->
       td z.date2str
 
 start = (data, table)->
-  pagesize = 10
   nav = table.next()
   tbody = table.find 'tbody'
   form = table.prev()
