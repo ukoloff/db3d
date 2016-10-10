@@ -3,7 +3,7 @@ class AuthController < ApplicationController
 
   def callback
     z = request.env['omniauth.auth'].as_json
-    oauth = Oauth.where(z.slice *%w(provider uid)).first_or_initialize
+    oauth = Oauth.unorphaned.where(z.slice *%w(provider uid)).first_or_initialize
     oauth.info = z
     oauth.user ||= current_user || User.create
     session[:uid] = oauth.user.id
