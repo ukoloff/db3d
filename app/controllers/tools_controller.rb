@@ -1,7 +1,7 @@
 class ToolsController < ApplicationController
   def index
     if params.key? 'js'
-      render json: Tool.all.as_json(only: %w(id name note), methods: %w(date2str))
+      render json: Tool.order(:id).as_json(only: %w(id name note), methods: %w(date2str))
     end
   end
 
