@@ -6,7 +6,12 @@ localStorage?['pagesize'] = pagesize
 
 sorters = _.map
   name: 0
-  date2str: 0
+  date: (z)->
+    String z.date2str || ''
+    .split /\D+/
+    .reverse()
+    .join '-'
+  author: 0
   (v, k)->
     v || k
 
