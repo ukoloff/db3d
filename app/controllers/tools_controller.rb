@@ -26,7 +26,7 @@ class ToolsController < ApplicationController
   end
 
   def new
-    @tool ||= Tool.new
+    @tool ||= Tool.new author: current_user.name
   end
 
   def create
