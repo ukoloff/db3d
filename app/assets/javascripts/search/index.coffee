@@ -1,8 +1,7 @@
 #
 # Быстрый полнотекстовый поиск
 #
-pagesize = Number localStorage?['pagesize']
-pagesize = Math.max 10, pagesize || 0
+pagesize = Math.max 10, +localStorage?['pagesize'] || 0
 localStorage?['pagesize'] = pagesize
 
 $ ->
