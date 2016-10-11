@@ -4,6 +4,12 @@
 pagesize = Math.max 10, +localStorage?['pagesize'] || 0
 localStorage?['pagesize'] = pagesize
 
+sorters = _.map
+  name: 0
+  date2str: 0
+  (v, k)->
+    v || k
+
 $ ->
   table = $ '#q'
   return unless table.length
@@ -33,27 +39,38 @@ start = (data, table)->
   pager = 0
   qv = 0
   sample = []
+  sortMode = localStorage?['sort']
+  sorted = []
 
   # Установить обработчики сортировки
   $.sorter table
-  .render localStorage?['sort']
+  .render sortMode
   .click (n)->
     localStorage?['sort'] = n
   .click (n)->
-    console.log "Sort:", n
+    sortMode = n
+    do reSort
 
   # Нарисовать отфильтрованное
   render = (page = 1, pages = Math.ceil sample.length / pagesize)->
-    tbody.html t shown = sample.slice (page - 1) * pagesize, page * pagesize
+    tbody.html t shown = sorted.slice (page - 1) * pagesize, page * pagesize
     nav.html pager = $.pager pages, page, render
     count.text _.uniq([shown.length, sample.length, data.length]).join '/'
 
-  do refilter = ->
+  reSort = ->
+    if sortMode
+      sorted = _.sortBy sample, sorters[Math.abs(sortMode) - 1]
+      sorted = sorted.reverse() if sortMode < 0
+    else
+      sorted = sample.slice()
+    do render
+
+  do reFilter = ->
     return if qv == q.val()
     sample = filter qv = q.val(), data
     localStorage?['q'] = qv
-    do render
-  setInterval refilter, 100
+    do reSort
+  setInterval reFilter, 100
 
 filter = (q, array)->
   return array.slice() unless q
