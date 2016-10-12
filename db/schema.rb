@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012084020) do
+ActiveRecord::Schema.define(version: 20161012091202) do
 
   create_table "fotos", force: :cascade do |t|
     t.integer  "tool_id"
@@ -35,6 +35,28 @@ ActiveRecord::Schema.define(version: 20161012084020) do
 
   add_index "oauths", ["provider", "uid"], name: "index_oauths_on_provider_and_uid"
   add_index "oauths", ["user_id"], name: "index_oauths_on_user_id"
+
+  create_table "t2ts", force: :cascade do |t|
+    t.integer  "tool_id",    null: false
+    t.integer  "tag_id",     null: false
+    t.integer  "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "t2ts", ["tag_id", "tool_id"], name: "index_t2ts_on_tag_id_and_tool_id", unique: true
+  add_index "t2ts", ["tool_id"], name: "index_t2ts_on_tool_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.text     "name",       null: false
+    t.integer  "creator_id"
+    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name"
 
   create_table "tools", force: :cascade do |t|
     t.string   "name"
