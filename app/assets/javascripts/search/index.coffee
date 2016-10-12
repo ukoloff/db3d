@@ -13,7 +13,8 @@ sorters = _.map
     .join '-'
   author: 0
   (v, k)->
-    v || k
+    v ||
+    (z)-> (z[k] or '').toLowerCase()
 
 $ ->
   table = $ '#q'
