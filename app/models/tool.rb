@@ -5,8 +5,8 @@ class Tool < ActiveRecord::Base
 
   has_one :foto
   belongs_to :creator, class_name: 'User'
-  has_many :t2t
-  has_many :tags, through: :t2t
+  has_many :t2ts
+  has_many :tags, through: :t2ts
 
   def date2str
     date.localtime.strftime '%d.%m.%Y' rescue nil
