@@ -30,7 +30,7 @@ class ToolsController < ApplicationController
   end
 
   def create
-    @tool = Tool.new
+    @tool = Tool.new creator: current_user
     tool_update
   end
 
@@ -64,7 +64,7 @@ class ToolsController < ApplicationController
 
   def attach_foto
     img = params[:tool][:img] or return
-    foto = @tool.foto || @tool.build_foto
+    foto = @tool.foto || @tool.build_foto(creator: current_user)
     foto.name = img.original_filename
     foto.mime = img.content_type
     foto.blob = img.read
