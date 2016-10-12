@@ -9,4 +9,13 @@ class Tag < ActiveRecord::Base
   def self.expire
     where('expire_at < ?', Time.now).destroy_all rescue nil
   end
+
+  def self.expire!
+    Thread.new { expire }
+  end
+
+  # Хак для массового получения id-ов инструментов
+  def tool_idz
+    t2ts.map &:tool_id
+  end
 end

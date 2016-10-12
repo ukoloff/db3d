@@ -36,7 +36,8 @@ t = withOut ->
       td z.date2str
       td z.author
 
-start = (data, table)->
+start = (json, table)->
+  data = json.tools
   nav = table.next()
   tbody = table.find 'tbody'
   form = table.prev()
