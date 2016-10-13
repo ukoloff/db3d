@@ -11,15 +11,21 @@ $ ->
 dragDrop = ->
   zone = $ '.dropzone'
   lastTarget = 0
+
+  show = (show)->
+    zone.css 'visibility', if show then 'visible' else ''
+    false
+
   $ window
   .on 'dragenter', (e)->
     return false unless e.originalEvent.dataTransfer?.types[0] == 'Files'
     lastTarget = e.target
-    zone.css 'visibility', 'visible'
-    false
+    show true
   .on 'dragover', ->
     false
   .on 'dragleave', (e)->
     return false if e.target != lastTarget
-    zone.css 'visibility', ''
-    false
+    show false
+  .on 'drop', (e)->
+    $('input[type=file]')[0].files = e.originalEvent.dataTransfer.files
+    show false
