@@ -18,7 +18,6 @@ dragDrop = ->
 
   $ window
   .on 'dragenter', (e)->
-    return false unless e.originalEvent.dataTransfer?.types[0] == 'Files'
     lastTarget = e.target
     show true
   .on 'dragover', ->
