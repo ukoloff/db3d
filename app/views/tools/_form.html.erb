@@ -24,8 +24,11 @@
       <i class='fa fa-folder-open-o'></i>
       Загрузить чертёж
     </span>
+    <span class='label label-success' id='file-name'></span>
   <% end %>
-  <%= f.file_field :img, class: 'hide'  %>
+  <div class='zero-height'>
+    <%= f.file_field :img  %>
+  </div>
 
   <p></p>
 
