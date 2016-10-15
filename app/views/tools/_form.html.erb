@@ -34,16 +34,16 @@
       </ol>
     </div>
   </div>
-  <div class='form-inline'>
+  <div class='form-inline text-center'>
     <% @tool.tags.pluck(:name).each do |tag| %>
     <%= f.text_field 'tags[]', value: tag, class: "form-control" %>
     <% end %>
     <%= f.text_field 'tags[]', value: nil, class: "form-control" %>
-    <button class='btn btn-warning' type='button'>
+    <button class='btn btn-warning pull-right' type='button'>
       <i class='fa fa-plus'></i>
       Добавить ключевое слово
     </button>
-    <%= javascript_tag "void #{JSON.pretty_generate Tag.order(1).pluck :name}" %>
+    <%= javascript_tag "$.editTags(#{JSON.pretty_generate Tag.order(1).pluck :name})" %>
   </div>
 
   <br>
