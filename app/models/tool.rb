@@ -21,7 +21,16 @@ class Tool < ActiveRecord::Base
     tags.order(1).pluck :name
   end
 
-  def tagnames= names
-    # TODO: Implement!
+  attr_accessor :current_user
+
+  def tagnames=names
+    # Список тегов
+    ts = Array.wrap(names).map(&:strip).reject(&:blank?).map do |tag|
+      Tag.where(name: tag).first_or_create creator: current_user
+    end.uniq
+    # Отключить отсутствующие
+    t2ts.includes(:tag).where(tag: tags - ts).destroy_all
+    # Подключить новые
+    (ts - tags).each{|tag| t2ts.create tag: tag, creator: current_user}
   end
 end

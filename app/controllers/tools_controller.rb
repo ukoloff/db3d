@@ -12,6 +12,7 @@ class ToolsController < ApplicationController
         )
       }
     end
+    Tag.expire!
   end
 
   def show
@@ -61,9 +62,16 @@ class ToolsController < ApplicationController
     # z
   end
 
+  def tool_tags
+    return unless tags = params[:tool][:tags]
+    @tool.current_user = current_user
+    @tool.tagnames = tags
+  end
+
   def tool_update
     new = @tool.new_record?
     if @tool.update tool_params
+      tool_tags
       attach_foto
       redirect_to @tool
     else
