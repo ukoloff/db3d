@@ -21,6 +21,12 @@
   <dd><%= @tool.date2str %></dd>
   <dt>Разработал</dt>
   <dd><%= @tool.author %></dd>
+  <dt>Ключевые слова</dt>
+  <dd>
+    <% @tool.tags.pluck(:name).each do |tag| %>
+    <span class='label label-success'><%= tag %></span>
+    <% end %>
+  </dd>
   <dt>Примечание</dt>
   <dd><%= @tool.note %></dd>
   <dt>Чертёж</dt>
