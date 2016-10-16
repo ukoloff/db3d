@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012091202) do
+ActiveRecord::Schema.define(version: 20161016154453) do
 
   create_table "fotos", force: :cascade do |t|
     t.integer  "tool_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20161012091202) do
     t.datetime "deleted_at"
   end
 
+  add_index "tags", ["expire_at"], name: "index_tags_on_expire_at"
   add_index "tags", ["name"], name: "index_tags_on_name"
 
   create_table "tools", force: :cascade do |t|
