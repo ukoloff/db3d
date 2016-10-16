@@ -23,7 +23,7 @@
   <dd><%= @tool.author %></dd>
   <dt>Ключевые слова</dt>
   <dd>
-    <% @tool.tags.pluck(:name).each do |tag| %>
+    <% @tool.tagnames.each do |tag| %>
     <span class='label label-success'><%= tag %></span>
     <% end %>
   </dd>

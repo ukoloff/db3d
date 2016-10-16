@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class='form-inline text-center'>
-  <% @tool.tags.pluck(:name).each do |tag| %>
+  <% @tool.tagnames.each do |tag| %>
   <input type='text' name='tool[tags][]', class='form-control' value="<%= tag %>">
   <% end %>
   <input type='text' name='tool[tags][]', class='form-control'>
