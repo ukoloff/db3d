@@ -1,9 +1,9 @@
 $.editTags = (tags)-> $ ->
   f = $ '.form-inline'
-  t = ' ' + $('input:last', f).clone().wrap('<p>').parent().html()
-
+  t = $('input:last', f).clone().wrap('<p>').parent().html() +
+    do withOut -> span ' '
   autocomplete = (x) ->
-    x.find 'input'
+    x
     .autocomplete
       minLength: 0
       source: tags
@@ -11,9 +11,10 @@ $.editTags = (tags)-> $ ->
       $ @
       .autocomplete 'search', ''
 
-  autocomplete f
+  autocomplete f.find 'input'
 
   $ 'button', f
   .click ->
     $ @
-    .before autocomplete $ t
+    .before z = $ t
+    autocomplete z.filter 'input'
