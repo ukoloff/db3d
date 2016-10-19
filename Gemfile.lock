@@ -77,6 +77,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.6)
+    lazy_columns (0.5.9)
+      activerecord (>= 3.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -216,6 +218,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   jquery-rails
+  lazy_columns
   omniauth-facebook
   omniauth-github
   omniauth-google-oauth2

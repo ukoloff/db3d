@@ -41,6 +41,7 @@ gem 'font-awesome-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'paranoia'
+gem 'lazy_columns'
 gem 'underscore-rails'
 gem 'without-rails'
 gem 'ru_propisju', require: false
