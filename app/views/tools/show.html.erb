@@ -30,5 +30,12 @@
   <dt>Примечание</dt>
   <dd><%= @tool.note %></dd>
   <dt>Чертёж</dt>
-  <dd><%= (foto=@tool.foto_name) ? link_to(foto, "#{tool_path @tool}?img") : '-' %></dd>
+  <dd>
+    <% if foto=@tool.foto %>
+    <%= link_to foto.name, "#{tool_path @tool}?img" %>
+    (<%= number_to_human_size foto.size %>)
+    <% else %>
+    -
+    <% end %>
+  </dd>
 </dl>

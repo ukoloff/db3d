@@ -17,10 +17,6 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'puma'
-
-gem 'rails_12factor', group: :production
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -36,15 +32,25 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Server
+gem 'rails_12factor', group: :production
+gem 'puma'
+
+# DB
+gem 'paranoia'
+gem 'lazy_columns'
+
+# Frontend
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-datepicker-rails'
-gem 'paranoia'
 gem 'underscore-rails'
 gem 'without-rails'
 gem 'ru_propisju', require: false
+
+# OAuth
 gem 'openssl-win-root'	if Gem.win_platform?
 gem 'omniauth-github'
 gem 'omniauth-facebook'
@@ -52,4 +58,3 @@ gem 'omniauth-twitter'
 gem "omniauth-yandex"
 gem 'omniauth-vkontakte'
 gem "omniauth-google-oauth2"
-gem 'omniauth-mailru'
