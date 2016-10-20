@@ -68,6 +68,7 @@ class ToolsController < ApplicationController
     foto.name = img.original_filename
     foto.mime = img.content_type
     foto.blob = img.read
+    foto.size = img.size
     foto.save
   end
 
