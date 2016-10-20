@@ -10,10 +10,12 @@ namespace :db do
         note: RuPropisju.propisju(i, 1, :ua)
       d = Date.today + i
       t.date = d if 0 != d.wday
+      txt = blob.result(binding).strip
       t.create_foto mime: "text/html",
         creator_id: -42,
         name: "#{i}.html",
-        blob: blob.result(binding).strip
+        size: txt.length,
+        blob: txt
       t.save
     end
   end

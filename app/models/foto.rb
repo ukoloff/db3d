@@ -1,4 +1,6 @@
 class Foto < ActiveRecord::Base
+  lazy_load :blob
+  
   validates :name, presence: {message: 'Не указано имя'}
 
   belongs_to :tool
