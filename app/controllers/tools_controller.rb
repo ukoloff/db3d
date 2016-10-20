@@ -57,9 +57,13 @@ class ToolsController < ApplicationController
   end
 
   def tool_params
-    params.require(:tool).permit %i(name date author note)
-    # z[:date] = Date.new(*z[:date].split(/\D+/).reverse.map(&:to_i)) unless z[:date].blank?
-    # z
+    params.require(:tool)
+    .permit(%i(name date author note))
+    .tap do |x|
+      next if x[:date].blank?
+      x[:date] = Date.new *x[:date]
+        .to_s.split(/\D+/).reject(&:blank?).reverse.take(3).map(&:to_i)
+    end
   end
 
   def tool_tags
