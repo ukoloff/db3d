@@ -11,18 +11,10 @@ class Ws
   end
 
   def call env
-    return @app.call env unless Faye::WebSocket.websocket? env
-
-    ws = Faye::WebSocket.new env, nil, ping: KeepAlive
-
-    ws.on :open do |event|
-      ws.send "Hello!"
+    if Faye::WebSocket.websocket? env
+      ::WsRoute.start Faye::WebSocket.new env, nil, ping: KeepAlive
+    else
+      @app.call env
     end
-
-    ws.on :message do |event|
-      ws.send event.data
-    end
-
-    ws.rack_response
   end
 end
