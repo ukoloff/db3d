@@ -35,6 +35,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Server
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem "faye-websocket"
 
 # DB
 gem 'paranoia'
