@@ -6,16 +6,16 @@ localStorage?['pagesize'] = pagesize
 
 sorters = _.map
   name: 0
-  date: (z)->
-    String z.date2str || ''
+  date: (tool)->
+    String tool.date2str || ''
     .split /\D+/
     .reverse()
     .join '-'
   author: 0
+  tags: (tool)-> tool._.$
   (v, k)->
     v ||
     (z)-> (z[k] or '').toLowerCase()
-
 $ ->
   table = $ '#q'
   return unless table.length
@@ -35,8 +35,14 @@ t = withOut ->
           z.name
       td z.date2str
       td z.author
+      td -> _.each z._, (tag)->
+        span
+          class: 'label label-success'
+          tag.name
+        text ' '
 
-start = (data, table)->
+start = (json, table)->
+  data = toolsOf json
   nav = table.next()
   tbody = table.find 'tbody'
   form = table.prev()
@@ -83,6 +89,25 @@ filter = (q, array)->
   return array.slice() unless q
   q = q.toLowerCase()
   match = (rec)->
-    return true for k, v of rec when 0 <= String(v).toLowerCase().indexOf q
+    for k, v of rec
+      if '_' == k
+        for tag in v when 0 <= tag._n.indexOf q
+          return true
+      else if 0 <= String(v or '').toLowerCase().indexOf q
+        return true
     false
   z for z in array when match z
+
+toolsOf = (json)->
+  _.each tools = json.tools, (tool)->
+    (tool._ = []).$ = 0
+  idx = _.indexBy tools, 'id'
+  _.each json.tags, (tag)->
+    tag._n = tag.name.toLowerCase()
+    $ = tag._.length
+    _.each tag._, (id)->
+      if tool = idx[id]
+        _ = tool._
+        _.push tag
+        _.$ += $
+  tools

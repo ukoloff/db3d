@@ -41,6 +41,7 @@ gem 'paranoia'
 gem 'lazy_columns'
 
 # Frontend
+gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'bootswatch-rails'
