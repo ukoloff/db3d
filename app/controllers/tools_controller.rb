@@ -8,7 +8,7 @@ class ToolsController < ApplicationController
         ),
         tags: Tag.includes(:t2ts).order(:name).as_json(
           only: %w(name),
-          methods: %w(tool_idz),
+          methods: %w(_),
         )
       }
     end

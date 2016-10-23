@@ -15,7 +15,7 @@ class Tag < ActiveRecord::Base
   end
 
   # Хак для массового получения id-ов инструментов
-  def tool_idz
+  def _
     t2ts.map &:tool_id
   end
 end
