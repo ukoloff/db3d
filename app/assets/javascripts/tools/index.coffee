@@ -35,9 +35,14 @@ t = withOut ->
           z.name
       td z.date2str
       td z.author
+      td -> _.each z._, (tag)->
+        span
+          class: 'label label-success'
+          tag.name
+        text ' '
 
 start = (json, table)->
-  data = json.tools
+  data = toolsOf json
   nav = table.next()
   tbody = table.find 'tbody'
   form = table.prev()
@@ -87,3 +92,17 @@ filter = (q, array)->
     return true for k, v of rec when 0 <= String(v).toLowerCase().indexOf q
     false
   z for z in array when match z
+
+toolsOf = (json)->
+  _.each tools = json.tools, (tool)->
+    (tool._ = []).$ = 0
+  idx = _.indexBy tools, 'id'
+  _.each json.tags, (tag)->
+    tag._n = tag.name.toLowerCase()
+    $ = tag._.length
+    _.each tag._, (id)->
+      if tool = idx[id]
+        _ = tool._
+        _.push tag
+        _.$ += $
+  tools
