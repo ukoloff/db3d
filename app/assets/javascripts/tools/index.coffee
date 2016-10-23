@@ -6,16 +6,16 @@ localStorage?['pagesize'] = pagesize
 
 sorters = _.map
   name: 0
-  date: (z)->
-    String z.date2str || ''
+  date: (tool)->
+    String tool.date2str || ''
     .split /\D+/
     .reverse()
     .join '-'
   author: 0
+  tags: (tool)-> tool._.$
   (v, k)->
     v ||
     (z)-> (z[k] or '').toLowerCase()
-
 $ ->
   table = $ '#q'
   return unless table.length
