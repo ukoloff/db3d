@@ -9,3 +9,8 @@ $.up = ->
     data: z
     processData: false
     contentType: false
+    xhr: ->
+      z = $.ajaxSettings.xhr()
+      z.upload.onprogress = (e)->
+        console.log 'Upload', e
+      z
