@@ -77,7 +77,7 @@ class ToolsController < ApplicationController
     if @tool.update tool_params
       tool_tags
       attach_foto
-      if params[:ajax]
+      if request.xhr?
         render json: {path: polymorphic_path(@tool)}
       else
         redirect_to @tool
