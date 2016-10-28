@@ -15,7 +15,7 @@ $.fn.ajaxify = ->
         xhr: ->
           z = $.ajaxSettings.xhr()
           z.upload.onprogress = (e)->
-            console.log 'Upload', e
+            progress.css width: "#{e.loaded / e.total * 100}%"
           z
       .always ->
         modal.modal 'hide'
@@ -26,5 +26,7 @@ $.fn.ajaxify = ->
     .one 'hide.bs.modal', ->
       0
     .modal()
+    progress = $ '.progress-bar', modal
+    progress.css width: 0
     false
   @
