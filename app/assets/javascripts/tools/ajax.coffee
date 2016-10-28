@@ -4,7 +4,7 @@
 $.up = ->
   z = new FormData f = document.forms[0]
   $.ajax
-    type: 'post'
+    type: f.method
     url: f.action
     data: z
     processData: false
