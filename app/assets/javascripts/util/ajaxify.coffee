@@ -20,7 +20,7 @@ $.fn.ajaxify = ->
       .always ->
         modal.modal 'hide'
       .done (data)->
-        console.log data
+        location.href = data.path
       .fail ->
         console.error "Oops!"
     .one 'hide.bs.modal', ->
