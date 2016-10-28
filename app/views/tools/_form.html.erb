@@ -27,7 +27,7 @@
   <%= render 'tags' %>
 
   <br>
-  
+
   <%= f.label :img do %>
     <span class='btn btn-info'>
       <i class='fa fa-folder-open-o'></i>
@@ -39,8 +39,9 @@
     <%= f.file_field :img  %>
   </div>
 
-
   <%= f.label :note, 'Примечание' %>
   <%= f.text_area :note, rows: 5, class: "form-control" %>
 
 <% end %>
+
+<%= render 'progress' %>
