@@ -1,3 +1,6 @@
+###
+Отображение имени загружаемого файла
+###
 $ ->
   label = $ '#file-name'
   return unless label.length
