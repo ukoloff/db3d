@@ -5,6 +5,7 @@ $.fn.ajaxify = ->
   return @ if 'function' != typeof FormData
   @.submit ->
     xhr = 0
+    aborted = false
     $(@).prev('div').remove() # Удалить сообщения об ошибках
     modal = $ '.modal'
     .one 'shown.bs.modal', =>
@@ -25,11 +26,12 @@ $.fn.ajaxify = ->
         do reset
       .done (data)->
         location.href = data.path
-      .fail =>
-        return unless xhr
+      .fail (xhr)=>
+        return if aborted
         $(@).before $ errorMsg xhr
     .one 'hide.bs.modal', ->
       return unless xhr
+      aborted = true
       xhr.abort()
       xhr = 0
     .modal()
