@@ -33,6 +33,8 @@ $.fn.ajaxify = ->
     .modal()
     progress = $ '.progress-bar', modal
     do reset = ->
-      progress.css width: 0
+      progress.css
+        width: 0
+        transition: 'none'
     false
   @
