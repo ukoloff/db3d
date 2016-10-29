@@ -83,7 +83,11 @@ class ToolsController < ApplicationController
         redirect_to @tool
       end
     else
-      render new ? 'new' : 'edit', status: 422
+      if request.xhr?
+        render 'errors', layout: false, status: 422
+      else
+        render new ? 'new' : 'edit', status: 422
+      end
     end
   end
 
