@@ -25,7 +25,8 @@ $.fn.ajaxify = ->
         do reset
       .done (data)->
         location.href = data.path
-      .fail (xhr)=>
+      .fail =>
+        return unless xhr
         $(@).before $ errorMsg xhr
     .one 'hide.bs.modal', ->
       return unless xhr
