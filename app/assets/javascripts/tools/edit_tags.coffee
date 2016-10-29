@@ -1,4 +1,6 @@
 $.editTags = (tags)-> $ ->
+  $ 'form'
+  .ajaxify()
   f = $ '.form-inline'
   t = $('input:last', f).clone().wrap('<p>').parent().html() +
     do withOut -> span ' '

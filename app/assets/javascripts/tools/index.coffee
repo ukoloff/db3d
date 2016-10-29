@@ -1,6 +1,6 @@
-#
-# Быстрый полнотекстовый поиск
-#
+###
+Быстрый полнотекстовый поиск
+###
 pagesize = Math.max 10, +localStorage?['pagesize'] || 0
 localStorage?['pagesize'] = pagesize
 

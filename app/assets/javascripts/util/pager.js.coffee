@@ -1,6 +1,6 @@
-#
-# Навигация по страницам
-#
+###
+Навигация по страницам
+###
 $.pager = pager = (pages, page, click)->
   z = $ tPager pages, page
   z.find('a').click ->

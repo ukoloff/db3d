@@ -77,9 +77,17 @@ class ToolsController < ApplicationController
     if @tool.update tool_params
       tool_tags
       attach_foto
-      redirect_to @tool
+      if request.xhr?
+        render json: {path: polymorphic_path(@tool)}
+      else
+        redirect_to @tool
+      end
     else
-      render new ? 'new' : 'edit'
+      if request.xhr?
+        render 'errors', layout: false, status: 422
+      else
+        render new ? 'new' : 'edit', status: 422
+      end
     end
   end
 
