@@ -21,6 +21,7 @@ $.fn.ajaxify = ->
       .always ->
         xhr = 0
         modal.modal 'hide'
+        do reset
       .done (data)->
         location.href = data.path
       .fail ->
@@ -31,6 +32,7 @@ $.fn.ajaxify = ->
       xhr = 0
     .modal()
     progress = $ '.progress-bar', modal
-    progress.css width: 0
+    do reset = ->
+      progress.css width: 0
     false
   @
