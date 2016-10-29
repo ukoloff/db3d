@@ -83,7 +83,7 @@ class ToolsController < ApplicationController
         redirect_to @tool
       end
     else
-      render new ? 'new' : 'edit'
+      render new ? 'new' : 'edit', status: 422
     end
   end
 
