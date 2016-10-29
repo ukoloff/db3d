@@ -5,6 +5,7 @@ $.fn.ajaxify = ->
   return @ if 'function' != typeof FormData
   @.submit ->
     xhr = 0
+    $(@).prev('div').remove() # Удалить сообщения об ошибках
     modal = $ '.modal'
     .one 'shown.bs.modal', =>
       xhr = $.ajax
@@ -24,8 +25,8 @@ $.fn.ajaxify = ->
         do reset
       .done (data)->
         location.href = data.path
-      .fail ->
-        console.error "Oops!"
+      .fail (xhr)=>
+        $(@).before $ errorMsg xhr
     .one 'hide.bs.modal', ->
       return unless xhr
       xhr.abort()
@@ -38,3 +39,15 @@ $.fn.ajaxify = ->
         transition: 'none'
     false
   @
+
+# Получить текст сообщений об ощибке
+errorMsg = (xhr)->
+  if ///^\s*<div\s[\s\S]+</div>\s*$///i.test xhr.responseText
+    xhr.responseText
+  else
+    tError xhr.statusText
+
+tError = withOut ->
+  div
+    class: 'alert alert-danger'
+    @
