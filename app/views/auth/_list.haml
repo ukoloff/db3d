@@ -13,12 +13,14 @@
   - me.oauths.each do |z|
     %tr
       %td.text-center{width: 1}
-        %i.fa.text-info{class: "fa-#{providers[z.provider][:icon]}", title: providers[z.provider][:title]}
+        %i.fa.text-info{class: "fa-#{providers[z.provider][:icon]}",
+          title: providers[z.provider][:title]}
       %td= z.name
       - if drop
         %td.text-right
           .btn-group
-            %button.btn.btn-danger.btn-xs.dropdown-toggle{'data-toggle': 'dropdown'} Отключить
+            %button.btn.btn-danger.btn-xs.dropdown-toggle{'data-toggle': 'dropdown'}
+              Отключить
             %ul.dropdown-menu.dropdown-menu-right
               %li
                 = link_to "#{auth_path}/#{z.id}", method: :delete do
