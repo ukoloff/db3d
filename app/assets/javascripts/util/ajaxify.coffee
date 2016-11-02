@@ -9,10 +9,12 @@ $.fn.ajaxify = ->
     $(@).prev('div').remove() # Удалить сообщения об ошибках
     modal = $ '.modal'
     .one 'shown.bs.modal', =>
+      $ @
+      .trigger 'db3d.file.dropped', [data = new FormData @]
       xhr = $.ajax
         type: @method
         url: @action
-        data: new FormData @
+        data: data
         processData: false
         contentType: false
         xhr: ->
