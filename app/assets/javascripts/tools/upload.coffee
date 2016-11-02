@@ -9,7 +9,7 @@ $ ->
   form = setupForm label
   $ 'input[type=file]', form
   .change ->
-    form.trigger "#{prefix}.clear"
+    form.trigger "#{prefix}clear"
     form.trigger "#{prefix}name", [@value.replace /^.*[\\\/]/, '']
 
   dragDrop form if window.FileReader
@@ -17,7 +17,7 @@ $ ->
 # Навесить обработчики на разные события в связи с загрузкой файлов
 setupForm = (label)->
   dropped = 0
-  label.parents 'form:first'
+  form = label.parents 'form:first'
   .on "#{prefix}name", (e, name)->
     # Отобразить имя файла
     label.text name
@@ -28,9 +28,12 @@ setupForm = (label)->
     # Уронили файл
     console.log 'DROP', file
     dropped = file
-    $(@).trigger "#{prefix}name", [file.name]
+    form.trigger "#{prefix}name", [file.name]
   .on "#{prefix}dropped", (e, formData)->
     # Брошенный файл нужно грузить
+    return unless dropped
+    name = $ 'input[type=file]', form
+    formData.set name[0].name, dropped
 
 # http://stackoverflow.com/questions/28226021/entire-page-as-a-dropzone-for-drag-and-drop
 dragDrop = (form)->
