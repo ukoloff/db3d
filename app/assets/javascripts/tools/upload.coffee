@@ -1,20 +1,39 @@
 ###
 Отображение имени загружаемого файла
 ###
+prefix = 'db3d.file.'
+
 $ ->
   label = $ '#file-name'
   return unless label.length
-  form = label.parents 'form:first'
-  form.on 'db3d.file.name', (e, name)->
-    label.text name
-  $ 'input[type=file]'
+  form = setupForm label
+  $ 'input[type=file]', form
   .change ->
-    form.trigger 'db3d.file.name', [@value.replace /^.*[\\\/]/, '']
+    form.trigger "#{prefix}.clear"
+    form.trigger "#{prefix}name", [@value.replace /^.*[\\\/]/, '']
 
-  do dragDrop if window.FileReader
+  dragDrop form if window.FileReader
+
+# Навесить обработчики на разные события в связи с загрузкой файлов
+setupForm = (label)->
+  dropped = 0
+  label.parents 'form:first'
+  .on "#{prefix}name", (e, name)->
+    # Отобразить имя файла
+    label.text name
+  .on "#{prefix}clear", ->
+    # Не использовать файл, брошенный на форму
+    dropped = 0
+  .on "#{prefix}drop", (e, file)->
+    # Уронили файл
+    console.log 'DROP', file
+    dropped = file
+    $(@).trigger "#{prefix}name", [file.name]
+  .on "#{prefix}dropped", (e, formData)->
+    # Брошенный файл нужно грузить
 
 # http://stackoverflow.com/questions/28226021/entire-page-as-a-dropzone-for-drag-and-drop
-dragDrop = ->
+dragDrop = (form)->
   lastTarget = 0
   $ 'body'
   .append icon = $ do withOut -> i class: 'fa fa-download fa-2x text-success'
@@ -34,7 +53,7 @@ dragDrop = ->
     false
   .on 'drop', (e)->
     icon.hide()
-    console.log 'DROP', e.originalEvent.dataTransfer.files[0]
+    form.trigger 'db3d.file.drop', [e.originalEvent.dataTransfer.files[0]]
     false
 
   iconShow = (e)->
