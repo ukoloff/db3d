@@ -1,0 +1,20 @@
+%label
+  Ключевые слова
+  %button.btn.btn-success.btn-xs{type: 'button',
+    'data-toggle': "collapse", 'data-target': "#tags-info"}
+    %i.fa.fa-question-circle
+.collapse#tags-info
+  .alert.alert-info
+    %ol
+      %li Каждое ключевое слово вводится в отдельное поле ввода
+      %li Для добавления ключевого слова нажмите кнопку "Добавить ключевое слово"
+      %li Для удаления ключевого слова просто сотрите его в поле ввода
+
+.form-inline.text-center
+  - @tool.tagnames.each do |tag|
+    %input.form-control{type: 'text', name: 'tool[tags][]', value: tag}
+  %input.form-control{type: 'text', name: 'tool[tags][]'}
+  %button.btn.btn-warning.pull-right{type: 'button'}
+    %i.fa.fa-plus
+    Добавить ключевое слово
+  = javascript_tag "$.editTags(#{JSON.pretty_generate Tag.order(1).pluck :name})"
