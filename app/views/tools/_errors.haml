@@ -1,0 +1,5 @@
+- if @tool.errors.any?
+  .alert.alert-danger
+    %ul
+      - @tool.errors.to_h.values.flatten.each do |msg|
+        %li= msg

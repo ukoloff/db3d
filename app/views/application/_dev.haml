@@ -1,0 +1,28 @@
+- if 'development' == Rails.env
+  %li.dropdown
+    %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown",
+      title: "Разработчику"}
+      %i.fa.fa-wrench
+      %span.caret
+    %ul.dropdown-menu
+      %li
+        %a{href: "https://db3d.herokuapp.com/", target: "_blank"}
+          %i.fa.fa-cloud
+          Heroku
+      %li
+        %a{href: rails_routes_path, target: "_blank"}
+          %i.fa.fa-random
+          Routes
+      %li.divider
+      %li
+        %a{href: 'http://getbootstrap.com/css/', target: "_blank"}
+          %i.fa.fa-bold
+          Bootstrap
+      %li
+        %a{href: 'https://bootswatch.com/', target: "_blank"}
+          %i.fa.fa-clock-o
+          Bootswatch
+      %li
+        %a{href: 'http://fontawesome.io/icons/', target: "_blank"}
+          %i.fa.fa-font-awesome
+          Font Awesome

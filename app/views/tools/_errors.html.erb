@@ -1,9 +1,0 @@
-<% if @tool.errors.any? %>
-<div class="alert alert-danger" role="alert">
-  <ul>
-    <% @tool.errors.to_h.values.flatten.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>

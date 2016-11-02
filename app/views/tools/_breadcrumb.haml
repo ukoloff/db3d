@@ -1,0 +1,9 @@
+%ol.breadcrumb
+  %li
+    = link_to 'Инструменты', Tool
+  - if @tool
+    %li.active
+      - if @tool.new_record?
+        = link_to 'Новый', new_tool_path
+      - else
+        = link_to @tool.name, @tool

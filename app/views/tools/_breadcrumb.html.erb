@@ -1,9 +1,0 @@
-<ol class="breadcrumb">
-  <li><%= link_to 'Инструменты', Tool %></li>
-  <% if @tool %>
-  <li class='active'><%= @tool.new_record? ?
-    link_to('Новый', new_tool_path)
-    :
-    link_to(@tool.name, @tool) %></li>
-  <% end %>
-</ol>

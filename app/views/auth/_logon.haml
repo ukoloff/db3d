@@ -1,0 +1,20 @@
+%h2 Авторизация
+- if me
+  Для Вашего удобства Вы можете
+  подключить дополнительные аккаунты социальных сетей.
+- else
+  Для работы на сайте Вам необходимо авторизоваться при помощи
+  одной из социальных сетей.
+
+.text-center
+  .btn-group.dropup
+    %button.btn.btn-success.dropdown-toggle{'data-toggle': 'dropdown'}
+      %i.fa.fa-key
+      Авторизоваться
+      %span.caret
+    %ul.dropdown-menu
+      - providers.each do |k, v|
+        %li
+          = link_to "#{auth_path}/#{k}" do
+            %i.fa.fa-fw.text-info{class: "fa-#{v[:icon]}"}
+            = v[:title]

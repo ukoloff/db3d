@@ -1,0 +1,28 @@
+- if me.disabled
+  %h2 Блокировка
+  Вы успешно авторизовались,
+  однако администратор системы заблокировал Вам
+  возможность работы.
+  Обратитесь к администратору.
+
+%h2 Подключенные социальные сети
+
+- drop = me.oauths.count > 1
+
+%table.table.table-striped.table-hover
+  - me.oauths.each do |z|
+    %tr
+      %td.text-center{width: 1}
+        %i.fa.text-info{class: "fa-#{providers[z.provider][:icon]}",
+          title: providers[z.provider][:title]}
+      %td= z.name
+      - if drop
+        %td.text-right
+          .btn-group
+            %button.btn.btn-danger.btn-xs.dropdown-toggle{'data-toggle': 'dropdown'}
+              Отключить
+            %ul.dropdown-menu.dropdown-menu-right
+              %li
+                = link_to "#{auth_path}/#{z.id}", method: :delete do
+                  %i.fa.fa-check
+                  Да, отключить соц. сеть

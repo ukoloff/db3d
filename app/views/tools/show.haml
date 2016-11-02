@@ -1,0 +1,35 @@
+= render 'breadcrumb'
+= link_to edit_tool_path(@tool), class: 'btn btn-info' do
+  %i.fa.fa-pencil
+  Изменить
+
+.btn-group
+  %a.btn.btn-danger.dropdown-toggle{'data-toggle': 'dropdown'}
+    %i.fa.fa-remove
+    Удалить
+  %ul.dropdown-menu.dropdown-menu-right
+    %li
+      = link_to @tool, method: :delete do
+        %i.fa.fa-check
+        Да, удалить
+
+%dl.dl-horizontal
+  %dt Имя
+  %dd= @tool.name
+  %dt Дата
+  %dd= @tool.date2str
+  %dt Разработал
+  %dd= @tool.author
+  %dt Ключевые слова
+  %dd
+    - @tool.tagnames.each do |tag|
+      %span.label.label-success= tag
+  %dt Примечание
+  %dd= @tool.note
+  %dt Чертёж
+  %dd
+    - if foto=@tool.foto
+      = link_to foto.name, "#{tool_path @tool}?img"
+      (#{number_to_human_size foto.size})
+    - else
+      %i.fa.fa-remove

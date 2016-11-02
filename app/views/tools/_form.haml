@@ -1,0 +1,32 @@
+= render 'errors'
+
+= form_for @tool do |f|
+  %button.btn.btn-primary{type: 'submit'}
+    %i.fa.fa-save
+    = @tool.new_record? ? 'Создать' : 'Сохранить'
+  %br
+
+  = f.label :name, 'Имя'
+  = f.text_field :name, class: "form-control", required: true, autofocus: true
+  = f.label :date, 'Дата'
+  = f.text_field :date, class: "form-control",
+    "data-provide"=> "datepicker", value: @tool.date2str
+  = f.label :author, 'Разработал'
+  = f.text_field :author, class: "form-control"
+
+  = render 'tags'
+
+  %br
+
+  = f.label :img do
+    %span.btn.btn-info
+      %i.fa.fa-folder-open-o
+      Загрузить чертёж
+    %span.label.label-success#file-name
+  .zero-height
+    = f.file_field :img
+
+  = f.label :note, 'Примечание'
+  = f.text_area :note, rows: 5, class: "form-control"
+
+= render 'progress'

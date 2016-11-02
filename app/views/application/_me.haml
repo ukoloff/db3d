@@ -1,0 +1,15 @@
+%li.dropdown
+  %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown"}
+    %i.fa.fa-user
+    = me.name
+    %span.caret
+  %ul.dropdown-menu
+    %li
+      = link_to auth_path do
+        %i.fa.fa-cloud
+        Соц. сети
+    %li.divider
+    %li
+      = link_to auth_path, method: :delete do
+        %i.fa.fa-lock
+        Выход

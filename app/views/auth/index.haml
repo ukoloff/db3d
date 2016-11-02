@@ -1,0 +1,7 @@
+%ol.breadcrumb
+  %li.active
+    = link_to 'Авторизация', auth_path
+
+= render 'list' if me
+= render 'logon'
+= render 'logoff' if me

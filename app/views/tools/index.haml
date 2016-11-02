@@ -1,0 +1,26 @@
+= render 'breadcrumb'
+
+%form.form-inline
+  %label
+    Поиск
+    %input.form-control{type: 'text', name: 'q'}
+  %span.badge{title: 'Показано/Найдено/Загружено строк'} ?
+
+  = link_to new_tool_path, class: 'btn btn-info pull-right' do
+    %i.fa.fa-plus
+    Создать
+
+%table.table.table-bordered.table-striped.table-hover#q
+  %thead
+    %th Имя
+    %th Дата
+    %th Разработал
+    %th Ключевые слова
+  %tbody
+  %tfoot
+    %tr
+      %td{colspan: 2}
+        %i.fa.fa-spin.fa-refresh
+        Подождите, идёт загрузка...
+
+%nav.text-center
