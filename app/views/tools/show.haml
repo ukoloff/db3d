@@ -1,8 +1,9 @@
 = render 'breadcrumb'
+
 = link_to edit_tool_path(@tool), class: 'btn btn-info' do
   %i.fa.fa-pencil
   Изменить
-
+= ' ' # Обязательный пробел между кнопками
 .btn-group
   %a.btn.btn-danger.dropdown-toggle{'data-toggle': 'dropdown'}
     %i.fa.fa-remove
