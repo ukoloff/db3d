@@ -31,7 +31,7 @@ dragDrop = ->
     false
   .on 'drop', (e)->
     icon.hide()
-    console.log 'DROP', e
+    console.log 'DROP', e.originalEvent.dataTransfer.files[0]
     false
 
   iconShow = (e)->
