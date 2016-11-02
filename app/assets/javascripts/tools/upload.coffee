@@ -4,9 +4,12 @@
 $ ->
   label = $ '#file-name'
   return unless label.length
+  form = label.parents 'form:first'
+  form.on 'db3d.file.name', (e, name)->
+    label.text name
   $ 'input[type=file]'
   .change ->
-    label.text @value.replace /^.*[\\\/]/, ''
+    form.trigger 'db3d.file.name', [@value.replace /^.*[\\\/]/, '']
 
   do dragDrop if window.FileReader
 
