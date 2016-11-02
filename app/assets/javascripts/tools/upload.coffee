@@ -33,7 +33,12 @@ setupForm = (label)->
     # Брошенный файл нужно грузить
     return unless dropped
     name = $ 'input[type=file]', form
-    formData.set name[0].name, dropped
+    name = name[0].name
+    try
+      # Not supported by MSIE
+      formData.set name, dropped
+    catch # Hack
+      formData.append name, dropped
 
 # http://stackoverflow.com/questions/28226021/entire-page-as-a-dropzone-for-drag-and-drop
 dragDrop = (form)->
